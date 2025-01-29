@@ -1,0 +1,16 @@
+=======================
+Fast Tunnel version 1.0
+December 1997
+=======================
+
+  Steer your little ship through the tunnel, trying not to
+hit the walls.
+
+Keys:
+ - Left/Right
+ - Mode to quit game
+ - Y= to quit to TIOS
+
+Andrew Von Dollen
+warn@geocites.com
+waffy on IRC
