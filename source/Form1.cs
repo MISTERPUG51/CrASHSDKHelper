@@ -23,7 +23,7 @@ namespace CrASH_SDK_Helper
             currentFile = saveFileDialog1.FileName;
             if (System.IO.Path.GetFileNameWithoutExtension(currentFile).Length > 8)
             {
-                MessageBox.Show("The file name (not including the extension) must be less than 8 characters. The CrASH SDK does not work properly with file names with more than 8 characters.", caption: "Error: Filename too long");
+                MessageBox.Show("The file name (not including the extension) must be less than 8 characters. The CrASH SDK does not work properly with file names with more than 8 characters.", caption: "Error: Filename too long", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SaveAs();
             } else
             {
@@ -99,57 +99,7 @@ namespace CrASH_SDK_Helper
 
         private void compileProgramToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (currentFile == "")
-            {
-                MessageBox.Show("You need to save this file before you can compile it.");
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("All changes must be saved in order to compile your program. Do you want to save and compile your program?", "Do you want to save?", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Save();
-                    saveFileDialog1.Title = "Chose or create an 82P file to save your compiled program to.";
-                    saveFileDialog1.Filter = "TI-82 Program File|*.82P";
-                    saveFileDialog1.ShowDialog();
-                    saveFileDialog1.Filter = "Assembly Files|*.asm";
-                    saveFileDialog1.Title = "Chose or create a file to save your program to.";
-                    string outputFile = saveFileDialog1.FileName;
-                    string currentdir = AppDomain.CurrentDomain.BaseDirectory;
-                    string asmFileInCrashFolder = currentdir + "/" + System.IO.Path.GetFileName(currentFile);
-                    if (System.IO.File.Exists(asmFileInCrashFolder))
-                    {
-                        System.IO.File.Delete(asmFileInCrashFolder);
-                    }
-                    System.IO.File.Copy(currentFile,asmFileInCrashFolder);
-                    System.Environment.CurrentDirectory = currentdir;
-
-                    if (System.IO.File.Exists(System.IO.Path.GetDirectoryName(asmFileInCrashFolder) + "/" + System.IO.Path.GetFileNameWithoutExtension(asmFileInCrashFolder) + ".82p"))
-                    {
-                        System.IO.File.Delete(System.IO.Path.GetDirectoryName(asmFileInCrashFolder) + "/" + System.IO.Path.GetFileNameWithoutExtension(asmFileInCrashFolder) + ".82p");
-                    }
-
-
-                    var process = Process.Start('"' + currentdir + "\\CRASM.BAT" + '"', System.IO.Path.GetFileNameWithoutExtension(asmFileInCrashFolder));
-                    process.WaitForExit();
-                    if (System.IO.File.Exists(System.IO.Path.GetDirectoryName(asmFileInCrashFolder) + "/" + System.IO.Path.GetFileNameWithoutExtension(asmFileInCrashFolder) + ".82p"))
-                    {
-                        if (System.IO.File.Exists(outputFile))
-                        {
-                            System.IO.File.Delete(outputFile);
-                        }
-                        System.IO.File.Copy(System.IO.Path.GetDirectoryName(asmFileInCrashFolder) + "/" + System.IO.Path.GetFileNameWithoutExtension(asmFileInCrashFolder) + ".82p", outputFile);
-                        MessageBox.Show("The program was successfully compiled.\n\nThe .82P file for your program is:\n" + outputFile);
-                    } else
-                    {
-                        MessageBox.Show("An error occured during compilation.\n\nThe command prompt window that just closed contains information about the error(s).\nTo see it again, compile the program again.", "Error");
-                    }
-                    
-
-
-                    //System.IO.Path.GetDirectoryName(currentFile) + System.IO.Path.GetFileNameWithoutExtension(currentFile)
-                }
-            }
+            Compile();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -159,7 +109,12 @@ namespace CrASH_SDK_Helper
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("CrASH SDK Helper 1.0\n\n©2025 MISTERPUG51\n\nFor more information, visit the Github repository:\nhttps://github.com/MISTERPUG51/CrASHSDKHelper", caption: "About");
+            DialogResult dialogResult = MessageBox.Show("CrASH SDK Helper 1.0\n\n©2025 MISTERPUG51\n\nThe license and other information can be found on the Github repository.\nDo you want to open the Github repository?", caption: "About", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Process.Start("https://github.com/MISTERPUG51/CrASHSDKHelper");
+            }
+
 
         }
 
@@ -169,7 +124,7 @@ namespace CrASH_SDK_Helper
             currentFile = openFileDialog1.FileName;
             if (System.IO.Path.GetFileNameWithoutExtension(currentFile).Length > 8)
             {
-                MessageBox.Show("The file name (not including the extension) must be less than 8 characters. Rename the file and try opening it again. The CrASH SDK does not work properly with file names with more than 8 characters.", caption: "Error: Filename too long");
+                MessageBox.Show("The file name (not including the extension) must be less than 8 characters. Rename the file and try opening it again. The CrASH SDK does not work properly with file names with more than 8 characters.", caption: "Error: Filename too long", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -199,6 +154,81 @@ namespace CrASH_SDK_Helper
         private void visitGithubRepositoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/MISTERPUG51/crashsdkhelper/");
+        }
+
+        public void Compile()
+        {
+            if (currentFile == "")
+            {
+                MessageBox.Show("You need to save this file before you can compile it.");
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("All changes must be saved in order to compile your program. Do you want to save and compile your program?", "Do you want to save?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Save();
+                    MessageBox.Show("Choose or create a file to save your compiled program to.");
+                    saveFileDialog1.Title = "Chose or create an 82P file to save your compiled program to.";
+                    saveFileDialog1.Filter = "TI-82 Program File|*.82P";
+                    saveFileDialog1.ShowDialog();
+                    saveFileDialog1.Filter = "Assembly Files|*.asm";
+                    saveFileDialog1.Title = "Chose or create a file to save your program to.";
+                    string outputFile = saveFileDialog1.FileName;
+                    string currentdir = AppDomain.CurrentDomain.BaseDirectory;
+                    string asmFileInCrashFolder = currentdir + "/" + System.IO.Path.GetFileName(currentFile);
+                    if (System.IO.File.Exists(asmFileInCrashFolder))
+                    {
+                        System.IO.File.Delete(asmFileInCrashFolder);
+                    }
+                    System.IO.File.Copy(currentFile, asmFileInCrashFolder);
+                    System.Environment.CurrentDirectory = currentdir;
+
+                    if (System.IO.File.Exists(System.IO.Path.GetDirectoryName(asmFileInCrashFolder) + "/" + System.IO.Path.GetFileNameWithoutExtension(asmFileInCrashFolder) + ".82p"))
+                    {
+                        System.IO.File.Delete(System.IO.Path.GetDirectoryName(asmFileInCrashFolder) + "/" + System.IO.Path.GetFileNameWithoutExtension(asmFileInCrashFolder) + ".82p");
+                    }
+
+
+                    var process = new Process();
+                    process.StartInfo = new ProcessStartInfo
+                    {
+                        FileName = '"' + currentdir + "\\CRASM.BAT" + '"',
+                        Arguments = System.IO.Path.GetFileNameWithoutExtension(asmFileInCrashFolder),
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true
+                    };
+
+                    process.Start();
+                    process.WaitForExit();
+
+                    if (System.IO.File.Exists(System.IO.Path.GetDirectoryName(asmFileInCrashFolder) + "/" + System.IO.Path.GetFileNameWithoutExtension(asmFileInCrashFolder) + ".82p"))
+                    {
+                        if (System.IO.File.Exists(outputFile))
+                        {
+                            System.IO.File.Delete(outputFile);
+                        }
+                        System.IO.File.Copy(System.IO.Path.GetDirectoryName(asmFileInCrashFolder) + "/" + System.IO.Path.GetFileNameWithoutExtension(asmFileInCrashFolder) + ".82p", outputFile);
+                        MessageBox.Show("The program was successfully compiled.\n\nThe .82P file for your program is:\n" + outputFile, caption: "Success!");
+                    }
+                    else
+                    {
+                        DialogResult dialogresult1 = MessageBox.Show("One or more errors occured during compilation. Do you want to see the error information?", caption: "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        if (dialogresult1 == DialogResult.Yes)
+                        {
+                            MessageBox.Show("CrASH SDK Output:\n" + process.StandardOutput.ReadToEnd() + "\n" + process.StandardError.ReadToEnd(), caption: "Error information");
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+        private void viewReadmeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("readme.txt");
         }
     }
 }

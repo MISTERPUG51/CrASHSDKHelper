@@ -116,6 +116,9 @@
     <Content Include="CRPRGM82.EXE">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TASM.EXE">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

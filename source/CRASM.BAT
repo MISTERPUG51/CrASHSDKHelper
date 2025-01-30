@@ -24,4 +24,3 @@ GOTO Done
 ECHO File Not Found: %1.ASM
 :Done
 ECHO.
-pause

@@ -37,6 +37,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compileProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importAincludeFileINCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crASHDocumentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cRASHTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.importAincludeFileINCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewReadmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,7 +86,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -122,15 +123,23 @@
             // compileProgramToolStripMenuItem
             // 
             this.compileProgramToolStripMenuItem.Name = "compileProgramToolStripMenuItem";
-            this.compileProgramToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.compileProgramToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.compileProgramToolStripMenuItem.Text = "Compile Program";
             this.compileProgramToolStripMenuItem.Click += new System.EventHandler(this.compileProgramToolStripMenuItem_Click);
+            // 
+            // importAincludeFileINCToolStripMenuItem
+            // 
+            this.importAincludeFileINCToolStripMenuItem.Name = "importAincludeFileINCToolStripMenuItem";
+            this.importAincludeFileINCToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.importAincludeFileINCToolStripMenuItem.Text = "Import a #include file (.INC)";
+            this.importAincludeFileINCToolStripMenuItem.Click += new System.EventHandler(this.importAincludeFileINCToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.crASHDocumentationToolStripMenuItem,
             this.aSMToolStripMenuItem,
+            this.viewReadmeToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
@@ -194,12 +203,12 @@
             this.saveFileDialog1.Filter = "Assembly Files|*.asm";
             this.saveFileDialog1.Title = "Chose or create a file to save your program to.";
             // 
-            // importAincludeFileINCToolStripMenuItem
+            // viewReadmeToolStripMenuItem
             // 
-            this.importAincludeFileINCToolStripMenuItem.Name = "importAincludeFileINCToolStripMenuItem";
-            this.importAincludeFileINCToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-            this.importAincludeFileINCToolStripMenuItem.Text = "Import a #include file (.INC)";
-            this.importAincludeFileINCToolStripMenuItem.Click += new System.EventHandler(this.importAincludeFileINCToolStripMenuItem_Click);
+            this.viewReadmeToolStripMenuItem.Name = "viewReadmeToolStripMenuItem";
+            this.viewReadmeToolStripMenuItem.Size = new System.Drawing.Size(323, 22);
+            this.viewReadmeToolStripMenuItem.Text = "View Readme";
+            this.viewReadmeToolStripMenuItem.Click += new System.EventHandler(this.viewReadmeToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -240,6 +249,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem importAincludeFileINCToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewReadmeToolStripMenuItem;
     }
 }
 
