@@ -10,3 +10,6 @@ Since the CrASH SDK is a 16-bit DOS program, and this program relies on it, CrAS
 
 ## Installing
 CrASH SDK Helper can be installed on your computer, or you can use the portable version. If you use the portable version, make sure that the full path of the folder does not contain any spaces. The CrASH SDK will not work properly if it contains spaces.
+
+## Screenshots
+![img](screenshot.png)
