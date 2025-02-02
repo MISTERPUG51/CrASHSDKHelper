@@ -47,6 +47,16 @@ namespace CrASH_SDK_Helper
         {
             openFileDialog1.FileName = "";
             saveToolStripMenuItem.Enabled = false;
+            if (!File.Exists("crasm.bat"))
+            {
+                MessageBox.Show("The CrASH SDK was not found. For legal reasons, it must be downloaded separately.\nSee the Installation section of the readme.txt file (Help->View Readme) for more information.", "Error: CrASH SDK not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (!File.Exists("TASM.EXE"))
+            {
+                MessageBox.Show("TASM.EXE was not found. For legal reasons, it must be downloaded separately.\nSee the Installation section of the readme.txt file (Help->View Readme) for more information.", "Error: TASM.EXE not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         private void cRASHTXTToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,12 +119,7 @@ namespace CrASH_SDK_Helper
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("CrASH SDK Helper 1.0\n\n©2025 MISTERPUG51\n\nThe license and other information can be found on the Github repository.\nDo you want to open the Github repository?", caption: "About", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Process.Start("https://github.com/MISTERPUG51/CrASHSDKHelper");
-            }
-
+            MessageBox.Show("CrASH SDK Helper 1.1\n\n©2025 MISTERPUG51\n\nThis software is licensed under the MIT license: https://opensource.org/license/mit\nThe CrASH SDK and TASM 3.1 are not part of this software, and thus are not under the MIT license.");
 
         }
 
@@ -146,15 +151,9 @@ namespace CrASH_SDK_Helper
             MessageBox.Show("File successfully imported. The imported file is located at:\n" + AppDomain.CurrentDomain.BaseDirectory + openFileDialog1.SafeFileName);
         }
 
-        private void visitWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://misterpug51.github.io/lnk/crashsdkhelper/");
-        }
+        
 
-        private void visitGithubRepositoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/MISTERPUG51/crashsdkhelper/");
-        }
+        
 
         public void Compile()
         {
@@ -229,6 +228,11 @@ namespace CrASH_SDK_Helper
         private void viewReadmeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("readme.txt");
+        }
+
+        private void visitGithubRepositoryToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/MISTERPUG51/crashsdkhelper/");
         }
     }
 }

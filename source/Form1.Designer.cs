@@ -43,11 +43,12 @@
             this.cRASHTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cRASHPRGTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aSMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewReadmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.viewReadmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visitGithubRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,6 +141,7 @@
             this.crASHDocumentationToolStripMenuItem,
             this.aSMToolStripMenuItem,
             this.viewReadmeToolStripMenuItem,
+            this.visitGithubRepositoryToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
@@ -175,6 +177,13 @@
             this.aSMToolStripMenuItem.Text = "ASM Programming Guide (on karma.ticalc.org)";
             this.aSMToolStripMenuItem.Click += new System.EventHandler(this.aSMToolStripMenuItem_Click);
             // 
+            // viewReadmeToolStripMenuItem
+            // 
+            this.viewReadmeToolStripMenuItem.Name = "viewReadmeToolStripMenuItem";
+            this.viewReadmeToolStripMenuItem.Size = new System.Drawing.Size(323, 22);
+            this.viewReadmeToolStripMenuItem.Text = "View Readme";
+            this.viewReadmeToolStripMenuItem.Click += new System.EventHandler(this.viewReadmeToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -203,12 +212,12 @@
             this.saveFileDialog1.Filter = "Assembly Files|*.asm";
             this.saveFileDialog1.Title = "Chose or create a file to save your program to.";
             // 
-            // viewReadmeToolStripMenuItem
+            // visitGithubRepositoryToolStripMenuItem
             // 
-            this.viewReadmeToolStripMenuItem.Name = "viewReadmeToolStripMenuItem";
-            this.viewReadmeToolStripMenuItem.Size = new System.Drawing.Size(323, 22);
-            this.viewReadmeToolStripMenuItem.Text = "View Readme";
-            this.viewReadmeToolStripMenuItem.Click += new System.EventHandler(this.viewReadmeToolStripMenuItem_Click);
+            this.visitGithubRepositoryToolStripMenuItem.Name = "visitGithubRepositoryToolStripMenuItem";
+            this.visitGithubRepositoryToolStripMenuItem.Size = new System.Drawing.Size(323, 22);
+            this.visitGithubRepositoryToolStripMenuItem.Text = "Visit Github repository";
+            this.visitGithubRepositoryToolStripMenuItem.Click += new System.EventHandler(this.visitGithubRepositoryToolStripMenuItem_Click_1);
             // 
             // Form1
             // 
@@ -250,6 +259,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem importAincludeFileINCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewReadmeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem visitGithubRepositoryToolStripMenuItem;
     }
 }
 
