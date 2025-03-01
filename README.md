@@ -17,4 +17,4 @@ Extract the contents of the CrASH SDK zip archive into the same folder as the fi
 <br>
 For TASM 3.1, you must extract TASM.EXE and TASM80.TAB to the same folder.
 ## Screenshots
-![img](screenshot.png)
+![img](https://raw.githubusercontent.com/MISTERPUG51/CrASHSDKHelper/refs/heads/main/screenshot.png)
